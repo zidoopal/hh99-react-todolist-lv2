@@ -22,6 +22,7 @@ function App() {
   const todo = useSelector((state) => {
     return state.todo;
   });
+
   // ------------------------------------------------------------
 
   // dispatch 가져오기 --------------------------------------------
@@ -54,22 +55,32 @@ function App() {
       <div>
         <h3>Working</h3>
         <div>
-          {todo.todos.map((item) => {
-            return (
-              <div key={item.id}>
-                <h2>{item.title}</h2>
-                <p>{item.contents}</p>
-                <button
-                  onClick={() => {
-                    dispatch(deleteTodo(todo.todos[0].id));
-                  }}
-                >
-                  삭제하기
-                </button>
-                <button>완료</button>
-              </div>
-            );
-          })}
+          {todo.todos
+            .filter((item) => {
+              return item.isDone === false;
+            })
+            .map((item) => {
+              return (
+                <div key={item.id}>
+                  <h2>{item.title}</h2>
+                  <p>{item.contents}</p>
+                  <button
+                    onClick={() => {
+                      dispatch(deleteTodo(item.id));
+                    }}
+                  >
+                    삭제하기
+                  </button>
+                  <button
+                    onClick={() => {
+                      dispatch(complateTodo(item.id));
+                    }}
+                  >
+                    {item.isDone === false ? "완료" : "취소"}
+                  </button>
+                </div>
+              );
+            })}
         </div>
         <h3>Done</h3>
         <div>
@@ -82,8 +93,20 @@ function App() {
                 <div key={item.id}>
                   <h2>{item.title}</h2>
                   <p>{item.contents}</p>
-                  <button>삭제하기</button>
-                  <button>완료</button>
+                  <button
+                    onClick={() => {
+                      dispatch(deleteTodo(item.id));
+                    }}
+                  >
+                    삭제하기
+                  </button>
+                  <button
+                    onClick={() => {
+                      dispatch(complateTodo(item.id));
+                    }}
+                  >
+                    {item.isDone === false ? "완료" : "취소"}
+                  </button>
                 </div>
               );
             })}

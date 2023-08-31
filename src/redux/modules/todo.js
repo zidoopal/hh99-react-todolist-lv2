@@ -19,7 +19,6 @@ export const complateTodo = (payload) => {
   };
 };
 export const deleteTodo = (payload) => {
-  console.log(payload);
   return {
     type: DELETE_TODO,
     payload,
@@ -33,18 +32,30 @@ const initialState = {
 const todo = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
-      console.log(state.todos);
       return {
-        ...state,
         todos: [
           ...state.todos,
           { ...action.payload, id: Date.now(), isDone: false },
         ],
       };
     case COMPLATE_TODO:
-      return;
+      const newComplateTodo = state.todos.map((item) => {
+        if (item.id === action.payload) {
+          return { ...item, isDone: !item.isDone };
+        }
+        return item;
+      });
+      return {
+        todos: newComplateTodo,
+      };
+
     case DELETE_TODO:
-      return {};
+      const newDeleteTodo = state.todos.filter(
+        (item) => item.id !== action.payload
+      );
+      return {
+        todos: newDeleteTodo,
+      };
     default:
       return state;
   }
