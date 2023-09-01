@@ -1,6 +1,8 @@
-import { styled } from "styled-components";
-import TodoInput from "../components/TodoInput";
-import TodoList from "../components/TodoList";
+import styled from 'styled-components';
+import TodoInput from '../components/TodoInput';
+import TodoList from '../components/TodoList';
+import { TodoTemplateBlock } from '../styles/styles';
+import GlobalStyle from '../styles/GlobalStyle';
 
 const StBox = styled.div`
   display: flex;
@@ -11,15 +13,16 @@ const StBox = styled.div`
 
 function Home() {
   return (
-    <>
+    <TodoTemplateBlock>
+      <GlobalStyle />
       <StBox>
         <h1>My Todo List</h1>
-        <a>React</a>
+        <span>React</span>
       </StBox>
       <TodoInput />
       <TodoList isDone={false} />
       <TodoList isDone={true} />
-    </>
+    </TodoTemplateBlock>
   );
 }
 

@@ -1,7 +1,9 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { TodoDetailBlock, DetailPage, StAddButton } from '../styles/styles';
+import GlobalStyle from '../styles/GlobalStyle';
 
 function About() {
   // store에 접근해서 todo 값 읽어오기 (state에 todo.js의 state가 담김)
@@ -15,16 +17,17 @@ function About() {
   });
   console.log(foundData);
   return (
-    <div>
-      <div>
-        <p>{foundData.id}</p>
-        <button>
+    <TodoDetailBlock>
+      <GlobalStyle />
+      <DetailPage>
+        <p>id: {foundData.id}</p>
+        <StAddButton>
           <Link to={`/`}>이전으로</Link>
-        </button>
-      </div>
-      <h2>{foundData.title}</h2>
-      <h3>{foundData.contents}</h3>
-    </div>
+        </StAddButton>
+        <h2>{foundData.title}</h2>
+        <h3>{foundData.contents}</h3>
+      </DetailPage>
+    </TodoDetailBlock>
   );
 }
 
