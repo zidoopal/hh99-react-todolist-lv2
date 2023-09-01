@@ -1,9 +1,8 @@
 import { useState } from "react";
-import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, complateTodo, deleteTodo } from "./redux/modules/todo";
+import { addTodo, complateTodo, deleteTodo } from "../redux/modules/todo";
 
-function App() {
+function Home() {
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
 
@@ -116,4 +115,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

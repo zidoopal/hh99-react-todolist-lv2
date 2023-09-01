@@ -1,5 +1,3 @@
-import React from "react";
-
 // action value
 const ADD_TODO = "todo/ADD_TODO";
 const COMPLATE_TODO = "todo/COMPLATE_TODO";
