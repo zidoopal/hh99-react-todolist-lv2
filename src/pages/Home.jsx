@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, complateTodo, deleteTodo } from "../redux/modules/todo";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [title, setTitle] = useState("");
@@ -46,6 +47,8 @@ function Home() {
         <button
           onClick={() => {
             dispatch(addTodo({ title, contents }));
+            setTitle("");
+            setContents("");
           }}
         >
           추가하기
@@ -61,6 +64,7 @@ function Home() {
             .map((item) => {
               return (
                 <div key={item.id}>
+                  <Link to={`/${item.id}`}>{item.id}</Link>
                   <h2>{item.title}</h2>
                   <p>{item.contents}</p>
                   <button
@@ -90,6 +94,7 @@ function Home() {
             .map((item) => {
               return (
                 <div key={item.id}>
+                  <Link to={`/${item.id}`}>{item.id}</Link>
                   <h2>{item.title}</h2>
                   <p>{item.contents}</p>
                   <button

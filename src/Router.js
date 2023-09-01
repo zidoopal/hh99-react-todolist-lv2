@@ -2,15 +2,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 
-const Router = () => {
+function Routers() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/1" element={<About />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/:id" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
-};
+}
 
-export default Router;
+export default Routers;
